@@ -1,5 +1,3 @@
--- add db name
+DROP DATABASE IF EXISTS recipe_db;
 
--- DROP DATABASE IF EXISTS ;
-
--- CREATE DATABASE ;
+CREATE DATABASE recipe_db;
