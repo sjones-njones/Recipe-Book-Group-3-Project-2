@@ -1,10 +1,12 @@
+let catString;
 const category = document.getElementById("category");
-let catString = function logger() {
-  category.addEventListener("change", () => {
-    //   console.log(category.value);
-    const result = category.value;
-    return result;
-    //   Expected value: seafood, vegan, dessert, breakfast
-  });
-};
-console.log(catString());
+const search = document.getElementById("search-button");
+
+search.addEventListener("click", () => {
+  catString = getCategory();
+  location.href = "/search/" + catString;
+});
+
+function getCategory() {
+  return category.value;
+}
