@@ -11,7 +11,7 @@ Recipe.init(
 			primaryKey: true,
 			autoIncrement: true,
 		},
-		dbId: {
+		idMeal: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
