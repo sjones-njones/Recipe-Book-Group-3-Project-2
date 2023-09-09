@@ -1,4 +1,4 @@
-const router = reuire('express').Router();
+const router = require('express').Router();
 const { Recipe } = require('../../models');
 const withAuth = require('../../utils/auth');
 
@@ -6,11 +6,12 @@ const withAuth = require('../../utils/auth');
 router.get('/:id', async (req, res) => {
     try {
         const recipeId = req.params.id;
-        const findRecipe = Recipe.findOne({
+        const findRecipe = await Recipe.findOne({
             where: {
                 id: recipeId,
             }
         });
+        console.log(findRecipe)
         if(!findRecipe) {
             res.status(404).json({ message: 'Cannot find recipe' });
         } else {
