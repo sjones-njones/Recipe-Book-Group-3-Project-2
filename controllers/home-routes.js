@@ -24,4 +24,13 @@ router.get("/search/:category", async (req, res) => {
   });
 });
 
+// render login page
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/search');
+    return;
+  }
+  res.render('login');
+});
+
 module.exports = router;
