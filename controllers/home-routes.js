@@ -2,7 +2,7 @@ const router = require("express").Router();
 // const { Recipe, Ingredient, User } = require("../models");
 const withAuth = require("../utils/Auth");
 
-// GET recipes for by category
+
 router.get("/search", async (req, res) => {
   res.render("search");
 });
@@ -22,6 +22,31 @@ router.get("/search/:category", async (req, res) => {
       });
     }
   });
+});
+
+router.get("/search/:idMeal", async (req, res) => {
+  const idMeal = req.params.idMeal;
+  const requestidMealURL = new URL(
+    `www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
+  );
+  fetch(requestidMealURL).then(function (response) {
+    if (response.ok) {
+      response.json().then(function (data) {
+        console.log(data);
+        let recipes = data.meals;
+        res.render("singleResult", { recipes });
+      });
+    }
+  });
+});
+
+// render login page
+router.get('/login', (req, res) => {
+  if (req.session.logged_In) {
+    res.redirect('/search');
+    return;
+  }
+  res.render('login');
 });
 
 module.exports = router;
