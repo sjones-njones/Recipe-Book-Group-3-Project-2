@@ -35,3 +35,4 @@ const recipeData = [
 const seedUser = () => Recipe.bulkCreate(recipeData);
 
 module.exports = seedUser;
+

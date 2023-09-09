@@ -24,6 +24,15 @@ router.get("/search/:category", async (req, res) => {
   });
 });
 
+// render login page
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/search');
+    return;
+  }
+  res.render('login');
+});
+
 router.get("/search/:idMeal", async (req, res) => {
   const idMeal = req.params.idMeal;
   const requestidMealURL = new URL(
