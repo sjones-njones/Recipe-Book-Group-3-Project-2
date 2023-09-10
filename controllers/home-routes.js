@@ -1,5 +1,4 @@
 const router = require("express").Router();
-// const { Recipe, Ingredient, User } = require("../models");
 const withAuth = require("../utils/auth");
 
 // GET recipes for by category
