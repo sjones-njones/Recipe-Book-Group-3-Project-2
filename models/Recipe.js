@@ -11,29 +11,25 @@ Recipe.init(
 			primaryKey: true,
 			autoIncrement: true,
 		},
-		idMeal: {
+		idMeal: { // MealsDb(server-side) id
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
-		name: {
+		strMeal: { // Meal name
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		description: {
-			type: DataTypes.TEXT,
+		strMealThumb: { // Meal thumbnail
+			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		keywords: {
-			type: DataTypes.TEXT,
-			allowNull: false,
-		},
-		userId: {
+		userId: { // User id association
 			type: DataTypes.INTEGER,
 			references: {
 				model: 'user',
 				key: 'id',
 			},
-		},
+		}
 	},
 	{
 		sequelize,
