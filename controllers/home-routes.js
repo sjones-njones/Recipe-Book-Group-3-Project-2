@@ -32,7 +32,7 @@ router.get("/search/:category", async (req, res) => {
     const requestCategoryURL = new URL(
       "http://www.themealdb.com/api/json/v1/1/filter.php"
     );
-    requestCategoryURL.searchParams.append("c", req.params.category);
+    requestCategoryURL.searchParams.append("c", category);
     fetch(requestCategoryURL).then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
