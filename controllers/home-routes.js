@@ -19,6 +19,8 @@ router.get('/', async (req, res) => {
     });
     const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
     res.render('homepage', { recipes, logged_in: req.session.logged_in });
+  } else {
+    res.render('homepage');
   }
   }
   catch (err) {
