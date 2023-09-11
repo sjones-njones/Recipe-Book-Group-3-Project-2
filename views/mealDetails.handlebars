@@ -1,13 +1,21 @@
 {{!-- Takes a recipe object from MealsDB --}}
-<h2>{{strMeal}}</h2>
-<img src="{{strMealThumb}}">
-<button class="button">Save or Delete</button>
+<h2 id="recipeTitle">{{recipeDetails.recipe.strMeal}}</h2>
+<img src="{{recipeDetails.recipe.strMealThumb}}" id="thumbnail">
+{{#if recipeDetails.saved}}
+<button class="button" id="delete" data-idMeal="{{recipeDetails.recipe.idMeal}}">Delete</button>
+{{else}}
+<button class="button" id="save" data-idMeal="{{recipeDetails.recipe.idMeal}}">Save</button>
+{{/if}}
 <section class="recipe-ingredients">
-    <p>Placeholder -- just show one ingredient for now</p>
-    {{strIngredient1}}
+    <p>Placeholder ingredient text goes here</p>
+
+    {{combine_ingredients recipeDetails.recipe}}
     
 </section>
 <section class="recipe-instructions">
-<p>{{strInstructions}}</p>
+<p>{{recipeDetails.recipe.strInstructions}}</p>
 
 </section>
+
+<script src="/js/mealDetails.js"></script>
+
