@@ -34,7 +34,12 @@ router.get('/recipebook/:id', async (req, res) => {
 // Saves users recipe from meal database to their recipe book
 router.post('/recipebook', async (req, res) => {
     try {
-        const saveRecipe = await Recipe.create(req.body);
+        const saveRecipe = await Recipe.create({
+            idMeal: req.body.idMeal,
+            strMeal: req.body.strMeal,
+            strMealThumb: req.body.strMealThumb,
+            userId: req.session.userId,
+        });
         res.status(200).json(saveRecipe);
     } catch (error) {
         res.status(500).json(error);
