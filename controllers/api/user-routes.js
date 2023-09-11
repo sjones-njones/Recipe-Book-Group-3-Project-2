@@ -33,7 +33,7 @@ router.post('/login', async (req, res) => {
     if (!UserData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+        .json({ message: 'Incorrect email or password or password. Please try again!' });
       return;
     }
 
