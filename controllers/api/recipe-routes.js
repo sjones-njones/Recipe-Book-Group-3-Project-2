@@ -2,17 +2,27 @@ const router = require('express').Router();
 const { Recipe } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// Finds users saved recipe(s)
-router.get('/:id', async (req, res) => {
+// Find all users saved recipes
+router.get('/recipebook', async (req, res) => {
+    try {
+        const userRecipes = req.body;
+        const allUserRecipes = await Recipe.findAll(userRecipes);
+        if (!allUserRecipes) {
+            res.status(404).json({ message: 'No recipes found' });
+        } else {
+            res.status(200).json(allUserRecipes);
+        }
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+// Finds users saved recipe
+router.get('/recipebook/:id', async (req, res) => {
     try {
         const recipeId = req.params.id;
-        const findRecipe = await Recipe.findOne({
-            where: {
-                id: recipeId,
-            }
-        });
+        const findRecipe = await Recipe.findByPk(recipeId);
         console.log(findRecipe)
-        if(!findRecipe) {
+        if (!findRecipe) {
             res.status(404).json({ message: 'Cannot find recipe' });
         } else {
             res.status(200).json(findRecipe);
@@ -22,7 +32,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 // Saves users recipe from meal database to their recipe book
-router.post('/', async (req, res) => {
+router.post('/recipebook', async (req, res) => {
     try {
         const saveRecipe = await Recipe.create(req.body);
         res.status(200).json(saveRecipe);
@@ -31,7 +41,7 @@ router.post('/', async (req, res) => {
     }
 });
 // Deletes users saved recipe from their recipe book
-router.delete('/:id', async (req, res) => {
+router.delete('/recipebook/:id', async (req, res) => {
     try {
         const deleteId = req.params.id;
         const deleteRecipe = await Recipe.destroy({
@@ -40,7 +50,7 @@ router.delete('/:id', async (req, res) => {
             }
         });
         if (!deleteRecipe) {
-            res.status(404).json({ message: 'Cannot find recipe'});
+            res.status(404).json({ message: 'Cannot find recipe' });
         } else {
             res.status(200).json(deleteRecipe);
         }

@@ -2,9 +2,15 @@ const router = require("express").Router();
 const { Recipe, User } = require("../models");
 const withAuth = require("../utils/auth");
 
+// GET recipes for by category
+router.get("/search", async (req, res) => {
+  res.render("search");
+});
+
 // gets only user's recipes
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
+    if (req.session.logged_In) {
     const recipeData = await Recipe.findAll({
       where: {
         userId: req.session.userId
@@ -12,26 +18,13 @@ router.get('/', withAuth, async (req, res) => {
       include: [{ model: User }]
     });
     const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-    const idMealOnly = recipes.idMeal;
-
-    for (let i = 0; i, idMealOnly.length; i++) {
-      idMeal = idMealOnly[i];
-      const requestidMealURL = `www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
-      fetch(requestidMealURL).then((response) => {
-        if (response.ok) {
-          response.json().then((data) => {
-            console.log(data.meals);
-            let recipe = data.meals;
-            res.render('homepage', { recipe, logged_in: req.session.logged_in });
-          });
-        }
-      })
-    }
-  } catch (err) {
-    console.log(err);
+    res.render('homepage', { recipes, logged_in: req.session.logged_in });
+  }
+  }
+  catch (err) {
     res.status(500).json(err)
   };
-})
+});
 
 router.get("/search/:category", async (req, res) => {
   try {
@@ -56,31 +49,51 @@ router.get("/search/:category", async (req, res) => {
 
 router.get("/recipe/:idMeal", async (req, res) => {
   try {
-    const dbrecipe = await Recipe.findOne({
-      where: { id: req.params.idMeal },
+    const allSearched = await Recipe.findAll({
+      where: {
+        userId: req.session.userId
+      },
       include: [{ model: User }],
     });
-    const idMeal = req.params.idMeal;
     const requestidMealURL = new URL(
-      `www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
-      );
-      fetch(requestidMealURL).then(function (response) {
-        if (response.ok) {
-          response.json().then(function (data) {
-            let recipes = data.meals;
-if (req.session.logged_in) {
-  const alreadySaved = idMealOnly.includes(req.body.idMeal);
-}
-recipeDetails = {
-  saved: alreadySaved,
-  recipe: recipes,
-  logged_in: req.session.logged_in 
-}
-        res.render("recipeDetail", { recipeDetails });
-      });
-    }
-  });
-}
+      `www.themealdb.com/api/json/v1/1/lookup.php?i=${req.params.idMeal}`
+    );
+    fetch(requestidMealURL).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          let recipes = data.meals;
+          recipeDetails = {
+            saved: allSearched.includes(req.params.idMeal),
+            recipe: recipes,
+            logged_in: req.session.logged_in
+          }
+          res.render("mealDetails", { recipeDetails });
+        });
+      }
+    });
+  }
+  catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+// gets only user's recipes
+router.get('/recipebook', async (req, res) => {
+  try {
+    if (req.session.logged_In) {
+    const recipeData = await Recipe.findAll({
+      where: {
+        userId: req.session.userId
+      },
+      include: [{ model: User }]
+    });
+    const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
+    res.render('recipebook', { recipes, logged_in: req.session.logged_in });
+  }
+  }
+  catch (err) {
+    res.status(500).json(err)
+  };
 });
 
 // render login page
