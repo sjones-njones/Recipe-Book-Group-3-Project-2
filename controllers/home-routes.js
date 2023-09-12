@@ -63,12 +63,12 @@ router.get("/recipe/:idMeal", async (req, res) => {
 
     }
     const requestidMealURL = new URL(
-      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772`
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${req.params.idMeal}`
     );
     fetch(requestidMealURL).then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          let recipes = data.meals;
+          let recipes = data.meals[0];
           recipeDetails = {
             saved: allSearched.includes(req.params.idMeal),
             recipe: recipes,
