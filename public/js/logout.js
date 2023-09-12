@@ -1,6 +1,8 @@
+console.log("running")
 $(document).ready(function () {
     $('#logout').on('click', async function () {
-      const response = await fetch('/logout', {
+      console.log("clic")
+      const response = await fetch('api/users/logout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });

@@ -32,7 +32,7 @@ router.get("/search/:category", async (req, res) => {
   try {
     const category = req.params.category;
     const requestCategoryURL = new URL(
-      "http://www.themealdb.com/api/json/v1/1/filter.php"
+      "https://www.themealdb.com/api/json/v1/1/filter.php"
     );
     requestCategoryURL.searchParams.append("c", req.params.category);
     fetch(requestCategoryURL).then(function (response) {
@@ -50,15 +50,20 @@ router.get("/search/:category", async (req, res) => {
 });
 
 router.get("/recipe/:idMeal", async (req, res) => {
+
+  let allSearched
   try {
-    const allSearched = await Recipe.findAll({
+    if (req.session.userId){
+      allSearched = await Recipe.findAll({
       where: {
         userId: req.session.userId
       },
       include: [{ model: User }],
     });
+
+    }
     const requestidMealURL = new URL(
-      `www.themealdb.com/api/json/v1/1/lookup.php?i=${req.params.idMeal}`
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772`
     );
     fetch(requestidMealURL).then(function (response) {
       if (response.ok) {
@@ -75,6 +80,7 @@ router.get("/recipe/:idMeal", async (req, res) => {
     });
   }
   catch (err) {
+    console.log(err)
     res.status(400).json(err);
   }
 });
