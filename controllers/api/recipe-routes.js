@@ -1,12 +1,19 @@
 const router = require('express').Router();
-const { Recipe } = require('../../models');
+const { Recipe, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Find all users saved recipes
 router.get('/recipebook', async (req, res) => {
     try {
+        const userId = req.session.userId;
         const userRecipes = req.body;
-        const allUserRecipes = await Recipe.findAll(userRecipes);
+        const allUserRecipes = await Recipe.findAll({
+            where: {
+                userId: userId,
+            }, include:[
+                {model: User}
+            ]
+        });
         if (!allUserRecipes) {
             res.status(404).json({ message: 'No recipes found' });
         } else {
@@ -17,10 +24,14 @@ router.get('/recipebook', async (req, res) => {
     }
 });
 // Finds users saved recipe
-router.get('/recipebook/:id', async (req, res) => {
+router.get('/recipebook/:idMeal', async (req, res) => {
     try {
-        const recipeId = req.params.id;
-        const findRecipe = await Recipe.findByPk(recipeId);
+        const recipeId = req.params.idMeal;
+        const findRecipe = await Recipe.findOne({
+            where: {
+                id_meal: recipeId
+
+            }});
         console.log(findRecipe)
         if (!findRecipe) {
             res.status(404).json({ message: 'Cannot find recipe' });
@@ -46,12 +57,12 @@ router.post('/recipebook', async (req, res) => {
     }
 });
 // Deletes users saved recipe from their recipe book
-router.delete('/recipebook/:id', async (req, res) => {
+router.delete('/recipebook/:idMeal', async (req, res) => {
     try {
-        const deleteId = req.params.id;
+        const deleteId = req.params.idMeal;
         const deleteRecipe = await Recipe.destroy({
             where: {
-                id: deleteId,
+                idMeal: deleteId,
             }
         });
         if (!deleteRecipe) {
