@@ -10,7 +10,7 @@
 {{else}}
 <button class="button" id="login"><a href="/login">Log in to save recipes</a></button>
 {{/if}}
-
+{{!-- Reformat the ingredients so the amounts and names are in one string --}}
 <section class="recipe-ingredients">
     <h2>Ingredients</h2>
     {{#each (combine_ingredients recipeDetails.recipe)}}

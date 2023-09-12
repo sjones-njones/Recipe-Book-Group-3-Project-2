@@ -1,4 +1,5 @@
 module.exports = {
+    // Combine ingredient amount and names into a string, return as array
     combine_ingredients: (recipe) => {
        
         let ingredientArray = [];
@@ -13,6 +14,7 @@ module.exports = {
         
         return ingredientArray
     },
+    // Break the instructions up into separate lines on the return characters, return as array
     break_instructions: (recipe) => {
         const instString = recipe.strInstructions
         console.log(instString)

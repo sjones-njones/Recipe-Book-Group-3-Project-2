@@ -35,6 +35,6 @@ const deleteHandler = async (e) => {
     }
 }
 
-
+//  Add event listeners
 document.getElementById("save").addEventListener("click", saveHandler)
 document.getElementById("delete").addEventListener("click", deleteHandler)

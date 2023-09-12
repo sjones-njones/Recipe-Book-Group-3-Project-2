@@ -28,6 +28,7 @@ router.get('/', async (req, res) => {
   };
 });
 
+// Return all recipes in a given category
 router.get("/search/:category", async (req, res) => {
   try {
     const category = req.params.category;
