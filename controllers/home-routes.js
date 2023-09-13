@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
     const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
     res.render('homepage', { recipes, logged_in: req.session.logged_in });
   } else {
-    res.render('homepage');
+    res.render('homepage', {homePage: true});
   }
   }
   catch (err) {
@@ -52,7 +52,7 @@ router.get("/search/:category", async (req, res) => {
 
 router.get("/recipe/:idMeal", async (req, res) => {
 
-  let allSearched
+  let allSearched = [];
   try {
     if (req.session.userId){
       allSearched = await Recipe.findAll({
