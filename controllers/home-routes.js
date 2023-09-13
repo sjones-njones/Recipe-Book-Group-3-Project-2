@@ -101,7 +101,7 @@ router.get('/recipebook', async (req, res) => {
 // render login page
 router.get('/login', (req, res) => {
   if (req.session.logged_In) {
-    res.redirect('/search');
+    res.redirect('/');
     return;
   }
   res.render('login');
