@@ -1,7 +1,6 @@
 const fetchUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
 const addedRecipeIds = [];
 
-$(document).ready(function () {
   // Function to fetch and add a random recipe card
   const fetchAndAddRecipeCard = () => {
     fetch(fetchUrl)
@@ -42,7 +41,6 @@ $(document).ready(function () {
   for (let i = 0; i < 8; i++) {
     fetchAndAddRecipeCard();
   }
-});
 
 function createCard(data) {
   const card = $("<div>").addClass("col-md-3 mb-4");
