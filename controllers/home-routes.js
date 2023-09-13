@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Recipe, User } = require('../models');
-const withAuth = require('../utils/auth');
 
 // GET recipes for by category
 router.get('/search', async (req, res) => {
@@ -30,7 +29,6 @@ router.get('/', async (req, res) => {
 // Return all recipes in a given category
 router.get('/search/:category', async (req, res) => {
   try {
-    const { category } = req.params;
     const requestCategoryURL = new URL(
       'https://www.themealdb.com/api/json/v1/1/filter.php'
     );

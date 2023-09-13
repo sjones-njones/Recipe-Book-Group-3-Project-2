@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Recipe, User } = require('../../models');
-const withAuth = require('../../utils/auth');
 
 // Find all users saved recipes
 router.get('/recipebook', async (req, res) => {
