@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Recipe, User } = require('../../models');
-const withAuth = require('../../utils/auth');
+const cardGen = require('../../public/js/cardGenerator');
 
 // Find all users saved recipes
 router.get('/recipebook', async (req, res) => {
@@ -14,6 +14,8 @@ router.get('/recipebook', async (req, res) => {
                 {model: User}
             ]
         });
+        cardGen(allUserRecipes);
+
         if (!allUserRecipes) {
             res.status(404).json({ message: 'No recipes found' });
         } else {
@@ -22,39 +24,42 @@ router.get('/recipebook', async (req, res) => {
     } catch (error) {
         res.status(500).json(error);
     }
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 // Finds users saved recipe
 router.get('/recipebook/:idMeal', async (req, res) => {
-    try {
-        const recipeId = req.params.idMeal;
-        const findRecipe = await Recipe.findOne({
-            where: {
-                id_meal: recipeId
-
-            }});
-        console.log(findRecipe)
-        if (!findRecipe) {
-            res.status(404).json({ message: 'Cannot find recipe' });
-        } else {
-            res.status(200).json(findRecipe);
-        }
-    } catch (error) {
-        res.status(500).json(error);
+  try {
+    const recipeId = req.params.idMeal;
+    const findRecipe = await Recipe.findOne({
+      where: {
+        id_meal: recipeId,
+      },
+    });
+    console.log(findRecipe);
+    if (!findRecipe) {
+      res.status(404).json({ message: 'Cannot find recipe' });
+    } else {
+      res.status(200).json(findRecipe);
     }
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 // Saves users recipe from meal database to their recipe book
 router.post('/recipebook', async (req, res) => {
-    try {
-        const saveRecipe = await Recipe.create({
-            idMeal: req.body.idMeal,
-            strMeal: req.body.strMeal,
-            strMealThumb: req.body.strMealThumb,
-            userId: req.session.userId,
-        });
-        res.status(200).json(saveRecipe);
-    } catch (error) {
-        res.status(500).json(error);
-    }
+  try {
+    const saveRecipe = await Recipe.create({
+      idMeal: req.body.idMeal,
+      strMeal: req.body.strMeal,
+      strMealThumb: req.body.strMealThumb,
+      userId: req.session.userId,
+    });
+    res.status(200).json(saveRecipe);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 // Deletes users saved recipe from their recipe book
 router.delete('/recipebook/:idMeal', async (req, res) => {
@@ -66,7 +71,6 @@ router.delete('/recipebook/:idMeal', async (req, res) => {
                 userId: req.session.userId
             }
         });
-        console.log(deleteRecipe)
         if (!deleteRecipe) {
             res.status(404).json({ message: 'Cannot find recipe' });
         } else {
@@ -74,7 +78,11 @@ router.delete('/recipebook/:idMeal', async (req, res) => {
         }
     } catch (error) {
         res.status(500).json(error);
+
     }
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 
 module.exports = router;

@@ -7,9 +7,8 @@ const seedAll = async () => {
 
   await seedUser();
   await seedRecipe();
-  
+
   process.exit(0);
 };
 
 seedAll();
-

@@ -1,7 +1,5 @@
-
-
-$(document).ready(function () {
-  $('.login-form').on('submit', async function (event) {
+$(document).ready(() => {
+  $('.login-form').on('submit', async (event) => {
     event.preventDefault();
 
     const email = $('#email-login').val().trim();
@@ -22,7 +20,7 @@ $(document).ready(function () {
     }
   });
 
-  $('.signup-form').on('submit', async function (event) {
+  $('.signup-form').on('submit', async (event) => {
     event.preventDefault();
 
     const name = $('#name-signup').val().trim(); // Add name here
