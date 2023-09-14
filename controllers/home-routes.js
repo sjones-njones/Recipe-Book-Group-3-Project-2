@@ -70,7 +70,7 @@ router.get("/recipe/:idMeal", async (req, res) => {
           recipeDetails = {
             saved: allSearched.includes(req.params.idMeal),
             recipe: recipes,
-            logged_in: req.session.logged_in
+            logged_In: req.session.logged_In
           }
           res.render("mealDetails", { recipeDetails });
         });
