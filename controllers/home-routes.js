@@ -44,17 +44,22 @@ router.get('/search/:category', async (req, res) => {
   }
 });
 
+
 router.get('/recipe/:idMeal', async (req, res) => {
   let allSearched = [];
   try {
     if (req.session.userId) {
       allSearched = await Recipe.findAll({
-        where: {
-          userId: req.session.userId,
-        },
-        include: [{ model: User }],
-      });
+      where: {
+        userId: req.session.userId
+      },
+      attributes: ["idMeal"],
+      include: [{ model: User }],
+    });
+
+
     }
+    const allSearchedPlain = allSearched.map((recipe) => recipe.get({ plain: true }).idMeal);
     const requestidMealURL = new URL(
       `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${req.params.idMeal}`
     );
@@ -63,7 +68,7 @@ router.get('/recipe/:idMeal', async (req, res) => {
         response.json().then((data) => {
           const recipes = data.meals[0];
           recipeDetails = {
-            saved: allSearched.includes(req.params.idMeal),
+            saved: allSearchedPlain.includes(parseInt(req.params.idMeal)),
             recipe: recipes,
             logged_In: req.session.logged_In
           }

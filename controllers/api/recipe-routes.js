@@ -63,17 +63,22 @@ router.post('/recipebook', async (req, res) => {
 });
 // Deletes users saved recipe from their recipe book
 router.delete('/recipebook/:idMeal', async (req, res) => {
-  try {
-    const deleteId = req.params.idMeal;
-    const deleteRecipe = await Recipe.destroy({
-      where: {
-        idMeal: deleteId,
-      },
-    });
-    if (!deleteRecipe) {
-      res.status(404).json({ message: 'Cannot find recipe' });
-    } else {
-      res.status(200).json(deleteRecipe);
+    try {
+        const deleteId = req.params.idMeal;
+        const deleteRecipe = await Recipe.destroy({
+            where: {
+                idMeal: deleteId,
+                userId: req.session.userId
+            }
+        });
+        if (!deleteRecipe) {
+            res.status(404).json({ message: 'Cannot find recipe' });
+        } else {
+            res.status(200).json(deleteRecipe);
+        }
+    } catch (error) {
+        res.status(500).json(error);
+
     }
   } catch (error) {
     res.status(500).json(error);
