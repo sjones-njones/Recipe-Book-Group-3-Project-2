@@ -4,30 +4,26 @@ const cardGen = require('../../public/js/cardGenerator');
 
 // Find all users saved recipes
 router.get('/recipebook', async (req, res) => {
-    try {
-        const userId = req.session.userId;
-        const userRecipes = req.body;
-        const allUserRecipes = await Recipe.findAll({
-            where: {
-                userId: userId,
-            }, include:[
-                {model: User}
-            ]
-        });
-        cardGen(allUserRecipes);
+  try {
+    const userId = req.session.userId;
+    const allUserRecipes = await Recipe.findAll({
+      where: {
+        userId: userId,
+      },
+      include: [{ model: User }],
+    });
+    cardGen(allUserRecipes);
 
-        if (!allUserRecipes) {
-            res.status(404).json({ message: 'No recipes found' });
-        } else {
-            res.status(200).json(allUserRecipes);
-        }
-    } catch (error) {
-        res.status(500).json(error);
+    if (!allUserRecipes) {
+      res.status(404).json({ message: 'No recipes found' });
+    } else {
+      res.status(200).json(allUserRecipes);
     }
   } catch (error) {
     res.status(500).json(error);
   }
 });
+
 // Finds users saved recipe
 router.get('/recipebook/:idMeal', async (req, res) => {
   try {
@@ -47,6 +43,7 @@ router.get('/recipebook/:idMeal', async (req, res) => {
     res.status(500).json(error);
   }
 });
+
 // Saves users recipe from meal database to their recipe book
 router.post('/recipebook', async (req, res) => {
   try {
@@ -63,22 +60,18 @@ router.post('/recipebook', async (req, res) => {
 });
 // Deletes users saved recipe from their recipe book
 router.delete('/recipebook/:idMeal', async (req, res) => {
-    try {
-        const deleteId = req.params.idMeal;
-        const deleteRecipe = await Recipe.destroy({
-            where: {
-                idMeal: deleteId,
-                userId: req.session.userId
-            }
-        });
-        if (!deleteRecipe) {
-            res.status(404).json({ message: 'Cannot find recipe' });
-        } else {
-            res.status(200).json(deleteRecipe);
-        }
-    } catch (error) {
-        res.status(500).json(error);
-
+  try {
+    const deleteId = req.params.idMeal;
+    const deleteRecipe = await Recipe.destroy({
+      where: {
+        idMeal: deleteId,
+        userId: req.session.userId,
+      },
+    });
+    if (!deleteRecipe) {
+      res.status(404).json({ message: 'Cannot find recipe' });
+    } else {
+      res.status(200).json(deleteRecipe);
     }
   } catch (error) {
     res.status(500).json(error);
