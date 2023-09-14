@@ -8,6 +8,7 @@
 
 main{
     background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/memphis-mini.png");
+    min-height: 100vh;
 }
 /* main div{
     width: 50%;
@@ -20,7 +21,7 @@ main{
     height: 10%;
 }
 
-.search-btn{
+#search-button{
     background-color: var(--dark-accent);
     color: var(--dark-shades);
     border: 3px solid var(--dark-shades);
@@ -38,6 +39,25 @@ main{
     border: 2px solid var(--dark-shades);
     background-color: var(--light-shades);
     border-radius: 10px;
+}
+
+.btn{
+    background-color: var(--dark-accent);
+}
+
+#detailThumbnail{
+    border: 3px solid var(--light-accent);
+    object-fit:cover;
+    border-radius: 5%;
+    padding: 0%;
+}
+
+.btn:hover{
+    background-color: var(--light-accent);
+}
+
+#loginToSave a{
+    text-decoration: none;
 }
 
 /* w-50 mx-auto pb-5 */

@@ -3,12 +3,13 @@ const saveHandler = async (e) => {
     const id = e.target.getAttribute('data-idMeal')
 
     const response = await fetch("/api/recipes/recipebook", {
+        
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
             idMeal: id,
-            strMeal: document.getElementById("recipeTitle").value,
-            strMealThumb: document.getElementById("thumbnail").getAttribute("src")
+            strMeal: document.getElementById("recipeTitle").textContent,
+            strMealThumb: document.getElementById("detailThumbnail").src,
         })
     });
     if (response.ok){
@@ -20,6 +21,7 @@ const saveHandler = async (e) => {
 }
 
 const deleteHandler = async (e) => {
+    console.log("clicked delete")
     e.preventDefault ();
     const id = e.target.getAttribute('data-idMeal')
 
@@ -35,6 +37,10 @@ const deleteHandler = async (e) => {
     }
 }
 
-//  Add event listeners
-document.getElementById("save").addEventListener("click", saveHandler)
-document.getElementById("delete").addEventListener("click", deleteHandler)
+document.getElementById("button-swapper").addEventListener("click", function(e){
+    if (e.target.textContent === "Save"){
+        saveHandler(e)
+    }else if (e.target.textContent === "Delete"){
+        deleteHandler(e)
+    }
+})

@@ -63,8 +63,10 @@ router.delete('/recipebook/:idMeal', async (req, res) => {
         const deleteRecipe = await Recipe.destroy({
             where: {
                 idMeal: deleteId,
+                userId: req.session.userId
             }
         });
+        console.log(deleteRecipe)
         if (!deleteRecipe) {
             res.status(404).json({ message: 'Cannot find recipe' });
         } else {

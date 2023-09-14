@@ -10,16 +10,14 @@ module.exports = {
             if (recipe[ingredient]){
                 ingredientArray.push( recipe[amount] + " "+ recipe[ingredient])
             }
-        }console.log(ingredientArray)
+        }
         
         return ingredientArray
     },
     // Break the instructions up into separate lines on the return characters, return as array
     break_instructions: (recipe) => {
         const instString = recipe.strInstructions
-        console.log(instString)
         const splitInst = instString.split("\r\n")
-        console.log(splitInst)
         return splitInst
     }
 }
