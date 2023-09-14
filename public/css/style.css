@@ -21,7 +21,7 @@ main{
     height: 10%;
 }
 
-#search-button{
+.search-btn{
     background-color: var(--dark-accent);
     color: var(--dark-shades);
     border: 3px solid var(--dark-shades);
