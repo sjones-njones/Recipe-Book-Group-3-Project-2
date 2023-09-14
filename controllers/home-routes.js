@@ -2,13 +2,10 @@ const router = require("express").Router();
 const { Recipe, User } = require("../models");
 const withAuth = require("../utils/auth");
 
-// GET recipes for by category
-router.get("/search", async (req, res) => {
-  res.render("search");
-});
-
 // gets only user's recipes
 router.get('/', async (req, res) => {
+  console.log("LOGGED IN")
+  console.log(req.session.logged_In)
   try {
     if (req.session.logged_In) {
     const recipeData = await Recipe.findAll({
@@ -18,7 +15,7 @@ router.get('/', async (req, res) => {
       include: [{ model: User }]
     });
     const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-    res.render('homepage', { recipes, logged_in: req.session.logged_in });
+    res.render('homepage', { recipes, logged_In: req.session.logged_In });
   } else {
     res.render('homepage');
   }
