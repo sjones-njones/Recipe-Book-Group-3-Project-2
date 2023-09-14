@@ -1,57 +1,59 @@
 const fetchUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
 const addedRecipeIds = [];
 
-  // Function to fetch and add a random recipe card
-  const fetchAndAddRecipeCard = () => {
-    fetch(fetchUrl)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Network response was not ok: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // Handle the JSON data
-        console.log(data);
+// Function to fetch and add a random recipe card
+const fetchAndAddRecipeCard = () => {
+  fetch(fetchUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Handle the JSON data
+      console.log(data);
 
-        const recipeId = data.meals[0].idMeal;
+      const recipeId = data.meals[0].idMeal;
 
         // Check if the recipe ID is already added
         if (!addedRecipeIds.includes(recipeId)) {
           const apiResponse = {
             imgSrc: data.meals[0].strMealThumb,
             cardText: data.meals[0].strMeal,
-            recipeURL: data.meals[0].strYoutube,
+            idMeal: data.meals[0].idMeal,
           };
+          
+        const card = createCard(apiResponse);
+        const cardContainer = $(".row");
+        cardContainer.append(card);
 
-          const card = createCard(apiResponse);
-          const cardContainer = $(".row");
-          cardContainer.append(card);
+        // Add the recipe ID to the array
+        addedRecipeIds.push(recipeId);
+      }
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+    });
+};
 
-          // Add the recipe ID to the array
-          addedRecipeIds.push(recipeId);
-        }
-      })
-      .catch((error) => {
-        console.error("Fetch error:", error);
-      });
-  };
-
-  // Fetch and add 8 random recipe cards
-  for (let i = 0; i < 8; i++) {
-    fetchAndAddRecipeCard();
-  }
+// Fetch and add 8 random recipe cards
+for (let i = 0; i < 8; i++) {
+  fetchAndAddRecipeCard();
+}
 
 function createCard(data) {
   const card = $("<div>").addClass("col-md-3 mb-4");
   const cardComponent = $("<div>").addClass("card");
+  
   const cardLink = $("<a>")
-    .attr("href", data.recipeURL)
-    .attr("target", "_blank");
+    .attr("href", `/recipe/${data.idMeal}`)
+  
   const cardImage = $("<img>")
     .addClass("card-img-top")
     .attr("src", data.imgSrc)
     .attr("alt", "Card Image");
+  
   const cardBody = $("<div>").addClass("card-body");
 
   const cardTitle = $("<h5>").addClass("card-title").text(data.cardText);
