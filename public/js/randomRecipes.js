@@ -21,7 +21,7 @@ const addedRecipeIds = [];
           const apiResponse = {
             imgSrc: data.meals[0].strMealThumb,
             cardText: data.meals[0].strMeal,
-            recipeURL: data.meals[0].strYoutube,
+            idMeal: data.meals[0].idMeal,
           };
 
           const card = createCard(apiResponse);
@@ -46,7 +46,7 @@ function createCard(data) {
   const card = $("<div>").addClass("col-md-3 mb-4");
   const cardComponent = $("<div>").addClass("card");
   const cardLink = $("<a>")
-    .attr("href", data.recipeURL)
+    .attr("href", `/recipe/${data.idMeal}`)
     .attr("target", "_blank");
   const cardImage = $("<img>")
     .addClass("card-img-top")
