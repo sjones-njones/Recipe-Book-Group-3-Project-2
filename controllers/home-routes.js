@@ -70,9 +70,8 @@ router.get('/recipe/:idMeal', async (req, res) => {
           recipeDetails = {
             saved: allSearchedPlain.includes(parseInt(req.params.idMeal)),
             recipe: recipes,
-            logged_In: req.session.logged_In
           }
-          res.render("mealDetails", { recipeDetails });
+          res.render("mealDetails", { recipeDetails, logged_In: req.session.logged_In });
 
         });
       }
@@ -94,7 +93,7 @@ router.get('/recipebook', async (req, res) => {
         include: [{ model: User }],
       });
       const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-      res.render('recipebook', { recipes, logged_in: req.session.logged_in });
+      res.render('recipebook', { recipes, logged_In: req.session.logged_In });
     }
   } catch (err) {
     res.status(500).json(err);
