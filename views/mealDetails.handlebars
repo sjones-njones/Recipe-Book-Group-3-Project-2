@@ -1,43 +1,43 @@
-{{! Takes a recipe object from MealsDB }}
-<div class="container border border-solid">
-  <h2 id="recipeTitle">{{recipeDetails.recipe.strMeal}}</h2>
-  <div class="row">
-    <div class="col">
-      <img src="{{recipeDetails.recipe.strMealThumb}}" id="thumbnail" />
-      {{#if logged_In}}
-        {{#if recipeDetails.saved}}
-          <button
-            class="button"
-            id="delete"
-            data-idMeal="{{recipeDetails.recipe.idMeal}}"
-          >Delete</button>
-        {{else}}
-          <button
-            class="button"
-            id="save"
-            data-idMeal="{{recipeDetails.recipe.idMeal}}"
-          >Save</button>
-        {{/if}}
-      {{else}}
-        <button class="button" id="login"><a href="/login">Log in to save
-            recipes</a></button>
-      {{/if}}
+{{!-- Takes a recipe object from MealsDB --}}
+<div class="meal-details">
+    <div class="row">
+        <h2 id="recipeTitle" class="pb-3 text-center">{{recipeDetails.recipe.strMeal}}</h2>
     </div>
-
-    {{! Reformat the ingredients so the amounts and names are in one string }}
-    <div class="col">
-      <section class="recipe-ingredients">
-        <h2>Ingredients</h2>
-        {{#each (combine_ingredients recipeDetails.recipe)}}
-          <p>{{this}}</p>
-        {{/each}}
-
-      </section>
-      <section class="recipe-instructions">
-        <h2>Instructions</h2>
+    <div class="row avoid-break-inside">
+        {{!-- Ingredients and picture/button --}}
+        <div class="col col-6">
+            <h2 class="fs-4">Ingredients</h2>
+            {{#each (combine_ingredients recipeDetails.recipe)}}
+            <li class="fs-6 py-1">{{this}}</li>
+            {{/each}}
+        </div>
+        <div class="col col-6 ">
+            <div class="row">
+                <img src="{{recipeDetails.recipe.strMealThumb}}" id="detailThumbnail" class="img-fluid">
+            </div>
+            <div class="row mt-2 mx-auto no-print" id="button-swapper">
+                {{#if logged_In}}
+                {{#if recipeDetails.saved}}
+                <button class="button btn mw-25 col-6 mx-auto" id="deleteRecipe"
+                    data-idMeal="{{recipeDetails.recipe.idMeal}}">Delete</button>
+                {{else}}
+                <button class="button btn mw-25 col-6 mx-auto" id="save"
+                    data-idMeal="{{recipeDetails.recipe.idMeal}}">Save</button>
+                {{/if}}
+                {{else}}
+                <a href="/login"><button class="button btn w-100 mx-0" id="loginToSave">Log in to save recipes</button></a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 avoid-break-inside">
+        <h2 class="fs-4">Instructions</h2>
         {{#each (break_instructions recipeDetails.recipe)}}
-          <p>{{this}}</p>
+        <p class="fs-6">{{this}}</p>
         {{/each}}
+    </div>
+</div>
+
 
       </section>
     </div>
