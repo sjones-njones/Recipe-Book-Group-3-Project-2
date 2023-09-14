@@ -1,29 +1,46 @@
-{{!-- Takes a recipe object from MealsDB --}}
-<h2 id="recipeTitle" class="break-after">{{recipeDetails.recipe.strMeal}}</h2>
-<img src="{{recipeDetails.recipe.strMealThumb}}" id="thumbnail">
-{{#if logged_In}}
-{{#if recipeDetails.saved}}
-<button class="button" id="delete" data-idMeal="{{recipeDetails.recipe.idMeal}}">Delete</button>
-{{else}}
-<button class="button" id="save" data-idMeal="{{recipeDetails.recipe.idMeal}}">Save</button>
-{{/if}}
-{{else}}
-<button class="button" id="login"><a href="/login">Log in to save recipes</a></button>
-{{/if}}
-{{!-- Reformat the ingredients so the amounts and names are in one string --}}
-<section class="recipe-ingredients">
-    <h2>Ingredients</h2>
-    {{#each (combine_ingredients recipeDetails.recipe)}}
-    <p>{{this}}</p>
-    {{/each}}
+{{! Takes a recipe object from MealsDB }}
+<div class="container border border-solid">
+  <h2 id="recipeTitle">{{recipeDetails.recipe.strMeal}}</h2>
+  <div class="row">
+    <div class="col">
+      <img src="{{recipeDetails.recipe.strMealThumb}}" id="thumbnail" />
+      {{#if logged_In}}
+        {{#if recipeDetails.saved}}
+          <button
+            class="button"
+            id="delete"
+            data-idMeal="{{recipeDetails.recipe.idMeal}}"
+          >Delete</button>
+        {{else}}
+          <button
+            class="button"
+            id="save"
+            data-idMeal="{{recipeDetails.recipe.idMeal}}"
+          >Save</button>
+        {{/if}}
+      {{else}}
+        <button class="button" id="login"><a href="/login">Log in to save
+            recipes</a></button>
+      {{/if}}
+    </div>
 
-</section>
-<section class="recipe-instructions">
-    <h2>Instructions</h2>
-    {{#each (break_instructions recipeDetails.recipe)}}
-    <p>{{this}}</p>
-    {{/each}}
+    {{! Reformat the ingredients so the amounts and names are in one string }}
+    <div class="col">
+      <section class="recipe-ingredients">
+        <h2>Ingredients</h2>
+        {{#each (combine_ingredients recipeDetails.recipe)}}
+          <p>{{this}}</p>
+        {{/each}}
 
-</section>
+      </section>
+      <section class="recipe-instructions">
+        <h2>Instructions</h2>
+        {{#each (break_instructions recipeDetails.recipe)}}
+          <p>{{this}}</p>
+        {{/each}}
 
+      </section>
+    </div>
+  </div>
+</div>
 <script src="/js/mealDetails.js"></script>
