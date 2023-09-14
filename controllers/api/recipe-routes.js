@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Recipe, User } = require('../../models');
-const cardGen = require('../../public/js/cardGenerator');
 
 // Find all users saved recipes
 router.get('/recipebook', async (req, res) => {
@@ -12,7 +11,6 @@ router.get('/recipebook', async (req, res) => {
       },
       include: [{ model: User }],
     });
-    cardGen(allUserRecipes);
 
     if (!allUserRecipes) {
       res.status(404).json({ message: 'No recipes found' });
