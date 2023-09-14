@@ -3,22 +3,23 @@ const { Recipe, User } = require('../models');
 
 // gets only user's recipes
 router.get('/', async (req, res) => {
-  console.log("LOGGED IN")
-  console.log(req.session.logged_In)
+  console.log('LOGGED IN');
+  console.log(req.session.logged_In);
   try {
     if (req.session.logged_In) {
-
-    const recipeData = await Recipe.findAll({
-      where: {
-        userId: req.session.userId
-      },
-      include: [{ model: User }]
-    });
-    const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-    res.render('homepage', { recipes, logged_In: req.session.logged_In });
-  } else {
-    res.render('homepage', {homePage: true});
-  }
+      const recipeData = await Recipe.findAll({
+        where: {
+          userId: req.session.userId,
+        },
+        include: [{ model: User }],
+      });
+      const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
+      res.render('homepage', { recipes, logged_In: req.session.logged_In });
+    } else {
+      res.render('homepage', { homePage: true });
+    }
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 
@@ -43,8 +44,7 @@ router.get('/search/:category', async (req, res) => {
   }
 });
 
-router.get("/recipe/:idMeal", async (req, res) => {
-
+router.get('/recipe/:idMeal', async (req, res) => {
   let allSearched = [];
   try {
     if (req.session.userId) {
