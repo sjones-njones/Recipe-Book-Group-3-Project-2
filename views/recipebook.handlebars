@@ -1,10 +1,6 @@
-{{!-- {{#each recipes as |recipe|}}
-{{> recipePreview}}
-{{/each}} --}}
-
 <div class="container">
   <div class="row">
-    {{#each recipes as |recipe|}}
+    {{#each recipes}}
       <div class="col-md-4">
         <div class="card">
           <a href="/recipe/{{idMeal}}">
