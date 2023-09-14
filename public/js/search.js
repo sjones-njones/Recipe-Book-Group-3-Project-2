@@ -1,7 +1,8 @@
 let catString;
-const category = document.getElementById("category");
-const search = document.getElementById("search-button");
-const searchBar = document.getElementById("search-bar");
+const category = document.getElementById('category');
+const search = document.getElementById('search-button');
+const searchBar = document.getElementById('search-bar');
+
 
 search.addEventListener("click", (e) => {
   e.preventDefault()

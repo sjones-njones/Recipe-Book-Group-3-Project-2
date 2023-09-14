@@ -19,6 +19,7 @@ const fetchAndAddRecipeCard = () => {
       // Check if the recipe ID is already added
       if (!addedRecipeIds.includes(recipeId)) {
         const apiResponse = {
+
           idMeal: data.meals[0].idMeal,
           imgSrc: data.meals[0].strMealThumb,
           cardText: data.meals[0].strMeal
