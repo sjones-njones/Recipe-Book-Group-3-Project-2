@@ -19,9 +19,10 @@ const fetchAndAddRecipeCard = () => {
       // Check if the recipe ID is already added
       if (!addedRecipeIds.includes(recipeId)) {
         const apiResponse = {
+
+          idMeal: data.meals[0].idMeal,
           imgSrc: data.meals[0].strMealThumb,
-          cardText: data.meals[0].strMeal,
-          recipeURL: data.meals[0].strYoutube,
+          cardText: data.meals[0].strMeal
         };
 
         const card = createCard(apiResponse);
@@ -46,8 +47,7 @@ function createCard(data) {
   const card = $("<div>").addClass("col-md-3 mb-4");
   const cardComponent = $("<div>").addClass("card");
   const cardLink = $("<a>")
-    .attr("href", data.recipeURL)
-    .attr("target", "_blank");
+    .attr("href", `/recipe/${data.idMeal}`)
   const cardImage = $("<img>")
     .addClass("card-img-top")
     .attr("src", data.imgSrc)
