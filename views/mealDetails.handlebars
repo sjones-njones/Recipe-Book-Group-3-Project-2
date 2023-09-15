@@ -19,17 +19,20 @@
 
                 {{#if logged_In}}
                 {{#if recipeDetails.saved}}
-                <button class="button btn btn-primary" id="delete"
+                <button class="button btn" id="delete"
                     data-idMeal="{{recipeDetails.recipe.idMeal}}">Delete</button>
                 {{else}}
-                <button class="button btn btn-primary mw-25" id="save"
+                <button class="button btn mw-25" id="save"
                     data-idMeal="{{recipeDetails.recipe.idMeal}}">Save</button>
                 {{/if}}
                 {{else}}
                 <a href="/login">
-                <button class="button btn btn-primary" id="login">Log in to save recipes</button>
+                <button class="button btn" id="login">Log in to save recipes</button>
                 </a>
                 {{/if}}
+            </div>
+            <div class="row mt-2 col-6 mx-auto">
+                <button class="button btn no-print" id="printButton">Print</button>
             </div>
         </div>
     </div>
