@@ -5,7 +5,7 @@ function cardGenerator(recipes){
     const cardInner = $('<div>').addClass('card');
     const cardImage = $('<img>').addClass('card-img-top').attr('src', recipe.strMealThumb).attr('alt', recipe.strMeal);
     const cardBody = $('<div>').addClass('card-body');
-    const cardTitle = $('<h5>').addClass('card-title').text(recipe.strMeal);
+    const cardTitle = $('<h5>').addClass('card-title text-center').text(recipe.strMeal);
     const cardText = $('<p>').addClass('card-text').text('ID: ' + recipe.idMeal);
 
     // Construct the card structure
