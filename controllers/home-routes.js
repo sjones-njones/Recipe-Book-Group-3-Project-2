@@ -35,7 +35,7 @@ router.get('/search/:category', async (req, res) => {
         response.json().then((data) => {
           console.log(data.meals);
           const recipes = data.meals;
-          res.render('searchResults', {
+          res.render('cardmaker', {
             recipes,
             logged_In: req.session.logged_In,
           });
@@ -97,7 +97,10 @@ router.get('/recipebook', async (req, res) => {
         include: [{ model: User }],
       });
       const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-      res.render('recipebook', { recipes, logged_In: req.session.logged_In });
+      res.render('cardmaker', {
+        recipes,
+        logged_In: req.session.logged_In,
+      });
     }
   } catch (err) {
     res.status(500).json(err);
