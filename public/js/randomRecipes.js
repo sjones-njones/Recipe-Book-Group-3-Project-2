@@ -49,11 +49,11 @@ function createCard(data) {
   const cardImage = $("<img>")
     .addClass("card-img-top")
     .attr("src", data.imgSrc)
-    .attr("alt", "Card Image");
-
+    .attr("alt", data.cardText);
+  
   const cardBody = $("<div>").addClass("card-body");
 
-  const cardTitle = $("<h5>").addClass("card-title").text(data.cardText);
+  const cardTitle = $("<h5>").addClass("card-title text-center").text(data.cardText);
 
   cardLink.css("text-decoration", "none");
   cardLink.css("color", "inherit");

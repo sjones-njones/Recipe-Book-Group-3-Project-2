@@ -22,13 +22,13 @@
 
   <body>
     <nav class="navbar navbar-expand-lg no-print align-baseline">
-      <div class="container align-baseline">
+      <div class="container align-baseline w-50 ">
         <a class="navbar-brand fs-2" href="/">CookBookmark</a>
         <div
           class="collapse navbar-collapse d-flex justify-content-between"
           id="navbarSupportedContent"
         >
-          <ul class="navbar-nav fs-4 align-bottom" id="button-group">
+          <ul class="navbar-nav fs-4 align-bottom flex-shrink-1" id="button-group">
             {{#if logged_In}}
               <li class="nav-item"><a
                   class="nav-link"
@@ -43,7 +43,7 @@
                 >Login</a></li>
             {{/if}}
           </ul>
-          <div class="search-ui d-flex flex-row fs-4">
+          <div class="search-ui d-flex flex-row fs-5 flex-shrink-1">
             <ul class="navbar-nav">
               <li class="nav-item dropdown"><a
                   class="nav-link dropdown-toggle me-3"
@@ -74,7 +74,7 @@
               </li>
             </ul>
             <button
-              class="btn btn-outline-success search-btn fs-4 mh-25"
+              class="btn btn-outline-success search-btn fs-5 mh-25"
               type="submit"
               href="/search"
               id="search-button"
