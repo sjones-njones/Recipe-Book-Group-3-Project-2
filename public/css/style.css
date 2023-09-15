@@ -10,11 +10,6 @@ main{
     background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/memphis-mini.png");
     min-height: 100vh;
 }
-/* main div{
-    width: 50%;
-    margin: auto;
-    padding: 1.25rem;
-} */
 
 .navbar{
     background-color: var(--main-brand);
@@ -65,11 +60,18 @@ main{
     color: #212529 !important;
 }
 
+#printButton{
+    background-color: var(--light-accent);
+}
+
 /* w-50 mx-auto pb-5 */
 
-/* @media print {
-    main div{
-        padding: 0 !important;
-        width: 100% !important;
+@media screen {
+    .content-body{
+        width: 50%;
+        margin: auto;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        
     }
-} */
+}

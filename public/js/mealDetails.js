@@ -45,3 +45,7 @@ document.getElementById("button-swapper").addEventListener("click", function(e){
         deleteHandler(e)
     }
 })
+
+document.getElementById("printButton").addEventListener("click", ()=>{
+  window.print()
+})
