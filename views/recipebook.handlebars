@@ -3,14 +3,14 @@
     {{#each recipes}}
       <div class="col-md-4">
         <div class="card">
-          <a href="/recipe/{{idMeal}}">
+          <a class="fix-link" href="/recipe/{{idMeal}}">
             <img
               class="card-img-top"
               src="{{strMealThumb}}"
               alt="{{strMeal}}"
             />
             <div class="card-body">
-              <h5 class="card-title">{{strMeal}}</h5>
+              <h5 class="card-title fix-link">{{strMeal}}</h5>
             </div>
           </a>
         </div>

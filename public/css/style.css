@@ -60,6 +60,11 @@ main{
     text-decoration: none;
 }
 
+.fix-link{
+    text-decoration: none !important;
+    color: #212529 !important;
+}
+
 /* w-50 mx-auto pb-5 */
 
 /* @media print {
