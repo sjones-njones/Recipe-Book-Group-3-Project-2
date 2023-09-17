@@ -81,7 +81,6 @@ main{
 }
 
 
-
 @media screen {
     .content-body{
         width: 50%;
@@ -92,66 +91,54 @@ main{
     }
 }
 
-
-
-@media  screen and (max-width: 1436px) {
+@media  screen and (max-width: 1134px) {
     .nav-link{
         font-size: 1rem!important;
     }
-
-    #category{
-        font-size: 0.75rem!important;
-    }
-
-    .navbar-brand{
-        font-size: 1rem!important;
-    }
-
-    
-
-    
 }
 
-@media screen and (max-width: 973px){
-    .container-fluid{
-        width: 60%!important;
-    }
-}
-
-
-@media screen and (max-width: 768px){
+@media screen and (max-width: 991px){
     .navbar-collapse{
         z-index: 100;
         background-color: var(--light-shades);
         padding: 10;
-        border-bottom-left-radius: 10%;
-        border-bottom-right-radius: 10%;
     }
 
-    .nav-link{
-        margin-bottom: 10;
-    }
-    
+   
+}
 
+@media screen and (max-width: 1024px) {
     h5{
-        font-size: 1rem;
+        font-size: 1rem!important;
     }
+}
 
-    .container-fluid{
-        width: 50%!important;
-    }
+@media screen and (max-width: 970px) {
     #button-swapper{
         min-width: 100%;
     }
     .button{
         min-width: 100%;
     }
-   
-} 
+    h5{
+        font-size: 0.75rem!important;
+    }
+}
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 645px) {
+    .navbar-brand{
+        font-size: 1.25rem!important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .navbar-brand{
+        font-size: 1rem!important;
+    }
+}
+
+@media screen and (max-width: 400px) {
     .navbar-brand{
         font-size: 0.75rem!important;
     }
-    
 }
