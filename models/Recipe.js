@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
+// creates a model for recipe
 class Recipe extends Model {}
 
 Recipe.init(
@@ -44,4 +45,5 @@ Recipe.init(
   }
 );
 
+// passes recipe to other files
 module.exports = Recipe;
