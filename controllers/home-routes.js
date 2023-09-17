@@ -1,3 +1,4 @@
+// makes models available to this file
 const router = require('express').Router();
 const { Recipe, User } = require('../models');
 
@@ -47,6 +48,7 @@ router.get('/search/:category', async (req, res) => {
   }
 });
 
+// returns one recipe when user clicks it
 router.get('/recipe/:idMeal', async (req, res) => {
   let allSearched = [];
   try {
@@ -116,4 +118,5 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// makes router available in other files
 module.exports = router;

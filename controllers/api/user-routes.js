@@ -11,9 +11,8 @@ router.post('/', async (req, res) => {
     });
     req.session.save(() => {
       req.session.logged_In = true;
-      req.session.userId = UserData.id
+      req.session.userId = UserData.id;
       res.status(200).json({ user: UserData, message: 'You have signed up!' });
-
     });
   } catch (err) {
     console.log(err);
@@ -21,7 +20,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Login
+// Login route
 router.post('/login', async (req, res) => {
   try {
     const UserData = await User.findOne({
@@ -59,9 +58,9 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Logout
+// Logout route
 router.post('/logout', (req, res) => {
-  console.log("route reached")
+  console.log('route reached');
   if (req.session.logged_In) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -71,4 +70,5 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// makes router available in other files
 module.exports = router;
