@@ -48,6 +48,7 @@ main{
 
 .btn{
     background-color: var(--dark-accent);
+    margin: .25rem;
 }
 
 #detailThumbnail{
@@ -79,7 +80,7 @@ main{
     color: var(--light-shades);
 }
 
-/* w-50 mx-auto pb-5 */
+
 
 @media screen {
     .content-body{
@@ -89,4 +90,68 @@ main{
         padding-bottom: 1.25rem;
         
     }
+}
+
+
+
+@media  screen and (max-width: 1436px) {
+    .nav-link{
+        font-size: 1rem!important;
+    }
+
+    #category{
+        font-size: 0.75rem!important;
+    }
+
+    .navbar-brand{
+        font-size: 1rem!important;
+    }
+
+    
+
+    
+}
+
+@media screen and (max-width: 973px){
+    .container-fluid{
+        width: 60%!important;
+    }
+}
+
+
+@media screen and (max-width: 768px){
+    .navbar-collapse{
+        z-index: 100;
+        background-color: var(--light-shades);
+        padding: 10;
+        border-bottom-left-radius: 10%;
+        border-bottom-right-radius: 10%;
+    }
+
+    .nav-link{
+        margin-bottom: 10;
+    }
+    
+
+    h5{
+        font-size: 1rem;
+    }
+
+    .container-fluid{
+        width: 50%!important;
+    }
+    #button-swapper{
+        min-width: 100%;
+    }
+    .button{
+        min-width: 100%;
+    }
+   
+} 
+
+@media screen and (max-width: 375px) {
+    .navbar-brand{
+        font-size: 0.75rem!important;
+    }
+    
 }
