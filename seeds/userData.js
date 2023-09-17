@@ -1,5 +1,6 @@
 const { User } = require('../models');
 
+// seed data for user model
 const userData = [
   {
     name: 'Stephanie',
@@ -18,6 +19,8 @@ const userData = [
   },
 ];
 
+// seeds the user model
 const seedUser = () => User.bulkCreate(userData);
 
+// allows seedUser to available in other files
 module.exports = seedUser;

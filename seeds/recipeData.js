@@ -1,5 +1,6 @@
 const { Recipe } = require('../models');
 
+// seed data for recipe model
 const recipeData = [
   {
     idMeal: 34245,
@@ -31,6 +32,8 @@ const recipeData = [
   },
 ];
 
+// seeds the data in the recipe model
 const seedUser = () => Recipe.bulkCreate(recipeData);
 
+// allows seedUser to be available elsewhere
 module.exports = seedUser;

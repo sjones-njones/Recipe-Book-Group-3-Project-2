@@ -4,10 +4,10 @@ const { Recipe, User } = require('../../models');
 // Find all users saved recipes
 router.get('/recipebook', async (req, res) => {
   try {
-    const userId = req.session.userId;
+    const { userId } = req.session;
     const allUserRecipes = await Recipe.findAll({
       where: {
-        userId: userId,
+        userId,
       },
       include: [{ model: User }],
     });
@@ -76,4 +76,5 @@ router.delete('/recipebook/:idMeal', async (req, res) => {
   }
 });
 
+// makes router available in other files
 module.exports = router;
