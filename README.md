@@ -7,6 +7,8 @@ A meal recipe application
 ## Table of Contents
 
 - [Description](#description)
+- [Website](#website-link)
+- [Views](#views)
 - [Deployment](#deployment)
 - [Technologies](#technologies)
 - [Installation](#local-installation)
@@ -21,6 +23,46 @@ A meal recipe application
 To taste or not to taste? you have come to the right place. CookBookmark is a website created to allow users to search for recipes by a few clicks. Then, just seconds later, recipes are where their eyes can see.
 
 In front of the user are recipes for what could possibly be some of their favorite meals. In addition to being able to fetch recipes, the user gets the ingredients and instructions so they can make their own version of the meal right at home. The user also has the option to save recipes from the database to their very own recipe book. Therefore having access to all their favorite meal's recipes without having to search and find it through the database. Upon save, this button will append to a delete if the user palate changes and wish to remove a recipe from their recipe book.
+
+Dont forget about the print button which allows the user to print a hard copy of the recipe shoud they want to. This is possible by a technology named: WordPress Gutenberg, that us developers decided to implement in this application. It is a cool and handy feature.
+
+## Website-Link
+
+The website is deployed by Heroku. [Click here](https://arcane-plains-78656-cf6bf218713f.herokuapp.com/) to visit.
+
+## Views
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center" align="top" width="12%">
+        <img src="https://github.com/sjones-njones/Recipe-Book-Group-3-Project-2/assets/132960605/18f1831e-a03d-4348-b5c9-d4a34f365767" width="500px" alt="login-signup-view"/> <br />
+        <sub><b>Login/Signup View</b></sub>
+        </a>
+      </td>
+      <td align="center" align="top" width="12%">
+        <img src="https://github.com/sjones-njones/Recipe-Book-Group-3-Project-2/assets/132960605/40795811-a6e3-421e-b7ae-de7140b26a81" width="500px" alt="logout-view"/> <br />
+        <sub><b>Logout View</b></sub>
+        </a>
+      </td>
+      <td align="center" align="top" width="12%">
+        <img src="https://github.com/sjones-njones/Recipe-Book-Group-3-Project-2/assets/132960605/408c7ff6-37ad-454e-a822-589dc8b0950c" width="500px" alt="loggedin-view"/> <br />
+        <sub><b>Logged-In View</b></sub>
+        </a>
+      </td>
+      <td align="center" align="top" width="12%">
+        <img src="https://github.com/sjones-njones/Recipe-Book-Group-3-Project-2/assets/132960605/86d953c8-a78b-4029-975e-2abd0f2324dd" width="500px" alt="recipe-details-view"/> <br />
+        <sub><b>Recipe Details View</b></sub>
+        </a>
+      </td>
+      <td align="center" align="top" width="12%">
+        <img src="https://github.com/sjones-njones/Recipe-Book-Group-3-Project-2/assets/132960605/ccaa25e1-b2cb-4f2d-9a2c-35fcc29faab2" width="500px" alt="recipebook-view"/> <br />
+        <sub><b>Recipe Book View</b></sub>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Deployment
 
