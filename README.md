@@ -90,6 +90,8 @@ The website is deployed by Heroku. [Click here](https://arcane-plains-78656-cf6b
 <img height="90" alt="ESlint" height="50" width="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/eslint/eslint-original-wordmark.svg">
 &nbsp;&nbsp;
 <img height="90" alt="JQuery" height="50" width="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/jquery/jquery-plain-wordmark.svg">
+&nbsp;&nbsp;
+<img height="90" alt="Wordpress-gutenberg" height="50" width="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/wordpress/wordpress-plain-wordmark.svg">
 </div>
 
 ## Local installation
@@ -127,7 +129,7 @@ To use application locally after installing VS Code, Node, and Express:
 - Open repository in VS Code through command line Terminal or GitBash by typing `code .`
 - Open integrated terminal and install dependencies by typing `npm install`
 - Finally, run `npm start` or `node server.js`
-- This app will be listenning for activity via their web browser at deafault port 3001. Go to `http://localhost:3001`
+- This app will be listenning for activity via their web browser at default port 3001. Go to `http://localhost:3001`
 
 ## APIs
 
