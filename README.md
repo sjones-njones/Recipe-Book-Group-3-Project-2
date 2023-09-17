@@ -9,7 +9,7 @@ A meal recipe search application
 - [Deployment](#deployment)
 - [Technologies](#technologies)
 - [Installation](#local-installation)
-- [Dependecies](#Dependencies)
+- [Dependencies](#recipes-dependencies)
 - [Usage](#usage)
 - [APIs](#apis)
 - [Contributors](#contributors)
