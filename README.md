@@ -1,7 +1,8 @@
 # CookBookmark
+
 [![${license}](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-A meal recipe search application
+A meal recipe application
 
 ## Table of Contents
 
@@ -50,7 +51,9 @@ In front of the user are recipes for what could possibly be some of their favori
 </div>
 
 ## Local installation
+
 To install Locally, download:
+
 <div>
 <img height="90" alt="Vscode" height="50" width="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original-wordmark.svg">
 &nbsp;&nbsp;
@@ -62,6 +65,7 @@ To install Locally, download:
 ## Recipes (Dependencies)
 
 - Required dependencies for application to function locally (all dependencies will install locally once user runs `npm install` via integrated terminal)
+
   - `express`
   - `express-Handlebars`
   - `mysql2`
@@ -73,35 +77,61 @@ To install Locally, download:
   - `eslint-config-wesbos`
   - `express-session`
 
-
 ## Usage
 
-To use application locally after installation process:
+To use application locally after installing VS Code, Node, and Express:
 
-* Clone this repository
-* Open repository in VS Code through command line terminal or GitBash by typing `code .`
-* Open integrated terminal and install dependencies by typing `npm install`
-* Finally, run `npm start` or `node server.js`
-* This app will be listenning for activity via their web browser at deafault port 3001. Go to `http://localhost:3001`
+- Clone this repository to yor local computer via Terminal or GitBash
+- Open repository in VS Code through command line Terminal or GitBash by typing `code .`
+- Open integrated terminal and install dependencies by typing `npm install`
+- Finally, run `npm start` or `node server.js`
+- This app will be listenning for activity via their web browser at deafault port 3001. Go to `http://localhost:3001`
 
 ## APIs
 
 ![Alt text](/public/images/image.png)
 
 ## Contributors
+
 A huge thank you to everyone who contributed to this awesome application
+
 <table>
   <tbody>
     <tr>
-      <td align="center" align="top" width="14.28%"><a href="https://github.com/lucygouvin"><img src="https://avatars.githubusercontent.com/u/57148256?v=4" width="100px;" alt="lucy-gouvin"/><br /><sub><b>Lucy Gouvin</b></sub></a><br /><a valign="center" href="devoloper"  title="developer">👩‍💻</a></td>
-      <td align="center" align="top" width="14.28%"><a href="https://github.com/sjones-njones"><img src="https://avatars.githubusercontent.com/u/132145599?v=4" width="100px;" alt="stephanie-jones"/><br /><sub><b>Stephanie Jones</b></sub></a><br /><a valign="center" href="devoloper"  title="developer">👩‍💻</a></td>
-      <td align="center" align="top" width="14.28%"><a href="https://github.com/sam-st"><img src="https://avatars.githubusercontent.com/u/52641515?v=4" width="100px;" alt="sam-steines"/><br /><sub><b>Sam Steines</b></sub></a><br /><a valign="center" href="devoloper"  title="developer">👨‍💻</a></td>
-      <td align="center" align="top" width="14.28%"><a href="https://github.com/Hewitt02"><img src="https://avatars.githubusercontent.com/u/134295975?v=4" width="100px;" alt="will"/><br /><sub><b>Will Hewitt</b></sub></a><br /><a valign="center" href="devoloper"  title="developer">👨‍💻</a></td>
-      <td align="center" align="top" width="14.28%"><a href="https://github.com/SaikouB"><img src="https://avatars.githubusercontent.com/u/132960605?v=4" width="100px;" alt="saikou-balde"/><br /><sub><b>Saikou Balde</b></sub></a><br /><a valign="center" href="devoloper"  title="developer">👨‍💻</a></td>              
+      <td align="center" align="top" width="12%">
+        <a href="https://github.com/lucygouvin">
+        <img src="https://avatars.githubusercontent.com/u/57148256?v=4" width="100px" alt="lucy-gouvin"/> <br />
+        <sub><b>Lucy Gouvin <br />👩‍💻</b></sub>
+        </a>
+      </td>
+      <td align="center" align="top" width="12%">
+        <a href="https://github.com/sjones-njones">
+        <img src="https://avatars.githubusercontent.com/u/132145599?v=4" width="100px" alt="stephanie-jones"/><br />
+        <sub><b>Stephanie Jones <br />👩‍💻</b></sub>
+        </a>
+      </td>
+      <td align="center" align="top" width="12%">
+        <a href="https://github.com/sam-st">
+        <img src="https://avatars.githubusercontent.com/u/52641515?v=4" width="100px" alt="sam-steines"/> <br />
+        <sub><b>Sam Steines <br />👨‍💻</b></sub>
+        </a>
+      </td>
+      <td align="center" align="top" width="12%">
+        <a href="https://github.com/Hewitt02">
+        <img src="https://avatars.githubusercontent.com/u/134295975?v=4" width="100px" alt="will-hewitt"/><br />
+        <sub><b>Will Hewitt <br />👨‍💻</b></sub>
+        </a>
+      </td>
+      <td align="center" align="top" width="12%">
+        <a href="https://github.com/SaikouB">
+        <img src="https://avatars.githubusercontent.com/u/132960605?v=4" width="100px" alt="saikou-balde"/><br />
+        <sub><b>Saikou Balde <br />👨‍💻</b></sub>
+        </a>
+      </td>              
     </tr>
   </tbody>
 </table>
 
 ## LICENSE
 
-[MIT](https://opensource.org/licenses/MIT)
+[MIT](LICENSE)
