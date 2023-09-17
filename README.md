@@ -8,9 +8,10 @@ A meal recipe search application
 - [Description](#description)
 - [Deployment](#deployment)
 - [Technologies](#technologies)
+- [Installation](#local-installation)
 - [Dependecies](#Dependencies)
-- [APIs](#apis)
 - [Usage](#usage)
+- [APIs](#apis)
 - [Contributors](#contributors)
 - [License](#license)
 
