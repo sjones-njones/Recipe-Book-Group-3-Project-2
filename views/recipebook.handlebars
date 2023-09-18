@@ -1,20 +1,27 @@
 <div class="container">
   <div class="row">
     {{#each recipes}}
+      <!-- Start of a loop through a list of recipes -->
       <div class="col-md-4">
         <div class="card">
           <a href="/recipe/{{idMeal}}">
+            <!-- Link to the recipe detail page -->
             <img
               class="card-img-top"
               src="{{strMealThumb}}"
               alt="{{strMeal}}"
             />
+            <!-- Recipe image -->
             <div class="card-body">
+              <!-- Container for recipe details -->
               <h5 class="card-title">{{strMeal}}</h5>
+              <!-- Recipe title -->
             </div>
           </a>
         </div>
       </div>
+      <!-- End of a single recipe card -->
     {{/each}}
+    <!-- End of the loop through recipes -->
   </div>
 </div>
