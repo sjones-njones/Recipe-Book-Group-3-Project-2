@@ -127,13 +127,19 @@ To use application locally after installing VS Code, Node, and Express:
 
 - Clone this repository to yor local computer via Terminal or GitBash
 - Open repository in VS Code through command line Terminal or GitBash by typing `code .`
+- Make sure to create a `.env` file in the parent folder. Add USER, PASSWORD and SECRET_KEY if necessary
+  example (copy & paste in `.env` file):
+  `DB_NAME='recipes_db'`,
+  `DB_USER=''`,
+  `DB_PASSWORD=''`,
+  `SECRET_KEY=''`
 - Open integrated terminal and install dependencies by typing `npm install`
-- Finally, run `npm start` or `node server.js`
+- Finally, run `npm start` or `node server.js` 
 - This app will be listenning for activity via their web browser at default port 3001. Go to `http://localhost:3001`
 
 ## APIs
 
-![Alt text](/public/images/image.png)
+[![Alt text](/public/images/image.png)](https://www.themealdb.com/api.php)
 
 ## Contributors
 
@@ -176,6 +182,6 @@ A huge thank you to everyone who contributed to this awesome application
   </tbody>
 </table>
 
-## LICENSE
+### LICENSE
 
 [MIT](LICENSE)
