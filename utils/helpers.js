@@ -8,7 +8,7 @@ module.exports = {
             
             const amount = "strMeasure"+i.toString()
             if (recipe[ingredient]){
-                ingredientArray.push( recipe[amount] + " "+ recipe[ingredient])
+                ingredientArray.push( (recipe[amount] + " "+ recipe[ingredient]).toLowerCase())
             }
         };
         

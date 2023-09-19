@@ -1,18 +1,16 @@
 const router = require('express').Router();
 const { Recipe, User } = require('../../models');
-const cardGen = require('../../public/js/cardGenerator');
 
 // Find all users saved recipes
 router.get('/recipebook', async (req, res) => {
   try {
-    const userId = req.session.userId;
+    const { userId } = req.session;
     const allUserRecipes = await Recipe.findAll({
       where: {
-        userId: userId,
+        userId,
       },
       include: [{ model: User }],
     });
-    cardGen(allUserRecipes);
 
     if (!allUserRecipes) {
       res.status(404).json({ message: 'No recipes found' });
@@ -78,4 +76,5 @@ router.delete('/recipebook/:idMeal', async (req, res) => {
   }
 });
 
+// makes router available in other files
 module.exports = router;

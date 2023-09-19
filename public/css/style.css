@@ -10,11 +10,6 @@ main{
     background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/memphis-mini.png");
     min-height: 100vh;
 }
-/* main div{
-    width: 50%;
-    margin: auto;
-    padding: 1.25rem;
-} */
 
 .navbar{
     background-color: var(--main-brand);
@@ -27,7 +22,13 @@ main{
     border: 3px solid var(--dark-shades);
     border-radius: 10px;
 }
+.card-container{
+    background-color: #FFFFFF;
+    padding: 3% 5% 0 5%;
+    border-radius: 5%;
+    border: 2px solid var(--light-shades)
 
+}
 .meal-details{
     background-color: #FFFFFF;
     padding: 5%;
@@ -41,8 +42,13 @@ main{
     border-radius: 10px;
 }
 
+.dropdown-toggle::after{
+    vertical-align: middle;
+}
+
 .btn{
     background-color: var(--dark-accent);
+    margin: .25rem;
 }
 
 #detailThumbnail{
@@ -60,11 +66,79 @@ main{
     text-decoration: none;
 }
 
-/* w-50 mx-auto pb-5 */
+.fix-link{
+    text-decoration: none !important;
+    color: #212529 !important;
+}
 
-/* @media print {
-    main div{
-        padding: 0 !important;
-        width: 100% !important;
+#printButton{
+    background-color: var(--light-accent);
+}
+
+#printButton:hover{
+    background-color: var(--dark-shades);
+    color: var(--light-shades);
+}
+
+
+@media screen {
+    .content-body{
+        width: 50%;
+        margin: auto;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        
     }
-} */
+}
+
+@media  screen and (max-width: 1134px) {
+    .nav-link{
+        font-size: 1rem!important;
+    }
+}
+
+@media screen and (max-width: 991px){
+    .navbar-collapse{
+        z-index: 100;
+        background-color: var(--light-shades);
+        padding: 10;
+    }
+
+   
+}
+
+@media screen and (max-width: 1024px) {
+    h5{
+        font-size: 1rem!important;
+    }
+}
+
+@media screen and (max-width: 970px) {
+    #button-swapper{
+        min-width: 100%;
+    }
+    .button{
+        min-width: 100%;
+    }
+    h5{
+        font-size: 0.75rem!important;
+    }
+}
+
+@media screen and (max-width: 645px) {
+    .navbar-brand{
+        font-size: 1.25rem!important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .navbar-brand{
+        font-size: 1rem!important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .navbar-brand{
+        font-size: 0.75rem!important;
+    }
+}

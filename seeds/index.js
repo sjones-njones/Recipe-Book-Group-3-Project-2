@@ -2,6 +2,7 @@ const sequelize = require('../config/connection');
 const seedUser = require('./userData');
 const seedRecipe = require('./recipeData');
 
+// seeds all of the data
 const seedAll = async () => {
   await sequelize.sync({ force: true });
 

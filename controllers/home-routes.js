@@ -1,3 +1,4 @@
+// makes models available to this file
 const router = require('express').Router();
 const { Recipe, User } = require('../models');
 
@@ -35,7 +36,10 @@ router.get('/search/:category', async (req, res) => {
         response.json().then((data) => {
           console.log(data.meals);
           const recipes = data.meals;
-          res.render('searchResults', { recipes });
+          res.render('cardmaker', {
+            recipes,
+            logged_In: req.session.logged_In,
+          });
         });
       }
     });
@@ -44,22 +48,22 @@ router.get('/search/:category', async (req, res) => {
   }
 });
 
-
+// returns one recipe when user clicks it
 router.get('/recipe/:idMeal', async (req, res) => {
   let allSearched = [];
   try {
     if (req.session.userId) {
       allSearched = await Recipe.findAll({
-      where: {
-        userId: req.session.userId
-      },
-      attributes: ["idMeal"],
-      include: [{ model: User }],
-    });
-
-
+        where: {
+          userId: req.session.userId,
+        },
+        attributes: ['idMeal'],
+        include: [{ model: User }],
+      });
     }
-    const allSearchedPlain = allSearched.map((recipe) => recipe.get({ plain: true }).idMeal);
+    const allSearchedPlain = allSearched.map(
+      (recipe) => recipe.get({ plain: true }).idMeal
+    );
     const requestidMealURL = new URL(
       `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${req.params.idMeal}`
     );
@@ -67,12 +71,14 @@ router.get('/recipe/:idMeal', async (req, res) => {
       if (response.ok) {
         response.json().then((data) => {
           const recipes = data.meals[0];
-          recipeDetails = {
+          const recipeDetails = {
             saved: allSearchedPlain.includes(parseInt(req.params.idMeal)),
             recipe: recipes,
-          }
-          res.render("mealDetails", { recipeDetails, logged_In: req.session.logged_In });
-
+          };
+          res.render('mealDetails', {
+            recipeDetails,
+            logged_In: req.session.logged_In,
+          });
         });
       }
     });
@@ -93,7 +99,10 @@ router.get('/recipebook', async (req, res) => {
         include: [{ model: User }],
       });
       const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-      res.render('recipebook', { recipes, logged_In: req.session.logged_In });
+      res.render('cardmaker', {
+        recipes,
+        logged_In: req.session.logged_In,
+      });
     }
   } catch (err) {
     res.status(500).json(err);
@@ -109,4 +118,5 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// makes router available in other files
 module.exports = router;
