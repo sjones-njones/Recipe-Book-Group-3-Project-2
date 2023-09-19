@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <!-- Start of a loop through recipes using Handlebars.js syntax -->
+    {{#each recipes as |recipe|}}
+      <div class="col-md-4">
+        <div class="card">
+          <a href="/recipe/{{recipe.idMeal}}">
+            <!-- Link to the recipe detail page with the recipe's ID -->
+            <img
+              class="card-img-top"
+              src="{{recipe.strMealThumb}}"
+              alt="{{recipe.strMeal}}"
+            />
+            <!-- Recipe image with source and alt text -->
+            <div class="card-body">
+              <!-- Container for recipe details -->
+              <h5 class="card-title">{{recipe.strMeal}}</h5>
+              <!-- Recipe title -->
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- End of a single recipe card -->
+    {{/each}}
+    <!-- End of the loop through recipes -->
+  </div>
+</div>
